@@ -21,13 +21,7 @@ public class coins {
         return min;
   }
 
-  //55
-  // coin: 25 | amount : 55 | min : 55
-  // coin: 25 | amount : 30 | min : 30
-  // coin: 25 | amount : 5  | min : 5
-  // coin: 10 | amount : 5  | min : 5
-  // coin: 5  | amount : 5  | min : 5 
-  // coin:    | amount : 0  | min :
+
 
 
 }
