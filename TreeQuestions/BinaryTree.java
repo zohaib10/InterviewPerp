@@ -15,20 +15,43 @@ public class BinaryTree{
 
   public static Node insertNode(Node curr, int value){
     if(curr == null){
-      System.out.println("inserting");
+      //System.out.println("inserting");
       return new Node(value);
     }
     if(value < curr.value){
-      System.out.println("going left");
+      //System.out.println("going left");
       curr.left = insertNode(curr.left, value);
     }else if(value > curr.value){
-      System.out.println("going right");
+      //System.out.println("going right");
       curr.right = insertNode(curr.right, value);
     }else{
       return curr;
     }
     return curr;
   }
+
+//########################################################################################################
+//Determine whether the Tree is a binary search Tree
+
+  public static boolean isBst(){
+    if(isBst(root.left, Integer.MIN_VALUE, root.value) && isBst(root.right, root.value, Integer.MAX_VALUE)){
+      return true;
+    }
+    return false;
+  }
+
+  public static boolean isBst(Node n, int min, int max){
+    if(n == null){
+      return true;
+    }
+    if(n.value > max || n.value < min){
+      return false;
+    }
+    return isBst(n.left, min, n.value) &&
+          isBst(n.right, n.value, max);
+  }
+
+//########################################################################################################
 
   public static BinaryTree createBinaryTree(){
     BinaryTree bst = new BinaryTree();
@@ -40,6 +63,10 @@ public class BinaryTree{
     bst.insert(7);
     bst.insert(8);
     bst.insert(6);
+    bst.insert(13);
+    bst.insert(64);
+    bst.insert(4);
+    bst.insert(29);
 
     return bst;
   }
@@ -47,10 +74,9 @@ public class BinaryTree{
 
   public static void main(String [] args){
     BinaryTree bst = createBinaryTree();
-
-
-
-    System.out.println("Works");
+    if(isBst()){
+      System.out.println("Valid Tree");
+    }
   }
 
 
