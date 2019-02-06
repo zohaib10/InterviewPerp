@@ -1,9 +1,14 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+
 public class BinaryTree{
   /*
           5
-       2     7
-     1  3  6  8
-
+       2      7
+     1  3   6  8
+         4      64
+               29
   */
    static Node root;
 
@@ -28,6 +33,33 @@ public class BinaryTree{
       return curr;
     }
     return curr;
+  }
+
+  //########################################################################################################
+  //Print Tree in Level Order
+
+  public static void printLevelOrder(){
+    Queue<Node> q = new LinkedList<>();
+
+    q.add(root);
+    while(q.size() != 0){
+      Node item = q.remove();
+      System.out.print(item.value + ", ");
+      if(item.left != null){
+        q.add(item.left);
+      }
+      if(item.right != null){
+        q.add(item.right);
+      }
+    }
+    System.out.println();
+
+    /*
+      5, 2, 7, 1, 3, 6, 8, 4, 13, 64, 29,
+
+      Refernces:
+        1. https://www.geeksforgeeks.org/queue-interface-java/
+    */
   }
 
 //########################################################################################################
@@ -74,9 +106,10 @@ public class BinaryTree{
 
   public static void main(String [] args){
     BinaryTree bst = createBinaryTree();
-    if(isBst()){
-      System.out.println("Valid Tree");
-    }
+    // if(isBst()){
+    //   System.out.println("Valid Tree");
+    // }
+    bst.printLevelOrder();
   }
 
 
