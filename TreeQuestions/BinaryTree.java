@@ -84,6 +84,30 @@ public class BinaryTree{
   }
 
 //########################################################################################################
+  public static void printTree(){
+
+    Queue<Node> q = new LinkedList<>();
+    Queue<Integer> cq = new LinkedList<>();
+    q.add(root);
+    while(q.size() != 0){
+      Node item = q.remove();
+      cq.add(item.value);
+      if(item.left != null){
+        q.add(item.left);
+      }
+      if(item.right != null){
+        q.add(item.right);
+      }
+    }
+
+    System.out.println(cq.size());
+
+  }
+
+
+
+
+//########################################################################################################
 
   public static BinaryTree createBinaryTree(){
     BinaryTree bst = new BinaryTree();
@@ -109,7 +133,8 @@ public class BinaryTree{
     // if(isBst()){
     //   System.out.println("Valid Tree");
     // }
-    bst.printLevelOrder();
+    //bst.printLevelOrder();
+    bst.printTree();
   }
 
 
