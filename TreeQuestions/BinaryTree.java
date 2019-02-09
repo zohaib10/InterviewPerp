@@ -84,27 +84,33 @@ public class BinaryTree{
   }
 
 //########################################################################################################
-  public static void printTree(){
+/*
+Question: Given a BinaryTree write a function to determine whether the tree is Balanced
+Approach: A tree is balanced if the height of the Left subtree and Right subtree differ only by 1
+*/
 
-    Queue<Node> q = new LinkedList<>();
-    Queue<Integer> cq = new LinkedList<>();
-    q.add(root);
-    while(q.size() != 0){
-      Node item = q.remove();
-      cq.add(item.value);
-      if(item.left != null){
-        q.add(item.left);
-      }
-      if(item.right != null){
-        q.add(item.right);
-      }
-    }
-
-    System.out.println(cq.size());
-
+public static int isTreeBalanced(Node curr){
+  if(curr == null){
+    return 0;
   }
 
+  int left = isTreeBalanced(curr.left);
+  int right = isTreeBalanced(curr.right);
 
+  if(left == -1 || right == -1) return -1;
+  if(Math.abs(left - right) > 1) return -1;
+
+  if(right > left) return right + 1;
+  else return left + 1;
+
+}
+
+public static boolean isTB(){
+  if(isTreeBalanced(root) == -1){
+    return false;
+  }
+  return true;
+}
 
 
 //########################################################################################################
@@ -122,7 +128,6 @@ public class BinaryTree{
     bst.insert(13);
     bst.insert(64);
     bst.insert(4);
-    bst.insert(29);
 
     return bst;
   }
@@ -130,11 +135,12 @@ public class BinaryTree{
 
   public static void main(String [] args){
     BinaryTree bst = createBinaryTree();
-    // if(isBst()){
-    //   System.out.println("Valid Tree");
-    // }
+     if(isTB()){
+       System.out.println("Balanced Tree");
+     }else{
+       System.out.println("Tree not Balanced");
+     }
     //bst.printLevelOrder();
-    bst.printTree();
   }
 
 
