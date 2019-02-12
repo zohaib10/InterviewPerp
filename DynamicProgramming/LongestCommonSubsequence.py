@@ -39,28 +39,46 @@ def findCommon(str1, str2):
     return matrix
 
 
+def reShapeMatrix(matrix,str1):
+    row = len(matrix)
+    col = len(matrix[0])
+    matrix1 = [[0 for x in range(col + 1)] for y in range(row + 1)]
+    for r in range(1,row+1):
+        for c in range(1,col+1):
+            matrix1[r][c] = matrix[r-1][c-1]
+
+    return matrix1
+
+
+
+
+
 def findString(matrix, str1):
-    printMatrix(matrix)
+    matrix = reShapeMatrix(matrix,str1)
+    list = []
     row = len(matrix) - 1
     col = len(matrix[0]) - 1
     val = matrix[row][col]
-    list = []
     while val > 0:
-        if row > 0 and col > 0:
-            if val > matrix[row-1][col] and val > matrix[row][col-1]:
-                list.append(str1[col-1])
-                row -= 1
-                col -= 1
-            elif val > matrix[row-1][col]:
-                row -= 1
-            else:
-                col -= 1
-            val = matrix[row][col]
+        if val > matrix[row-1][col] and val > matrix[row][col-1]:
+            col -= 1
+            row -= 1
+        elif val == matrix[row-1][col] and val != matrix[row][col-1]:
+            row -= 1
         else:
-            if matrix[row][col] == 1:
-                list.append(str1[col-1])
-                val = 0
+            col -= 1
+        if val != matrix[row][col]:
+            if val == 1:
+                val -= 1
+            list.append(str1[val])
+            val = matrix[row][col]
+
+    print(str1)
+    printMatrix(matrix)
     return list
+
+
+
 
 def printMatrix(matrix):
     for i in range(len(matrix)):
