@@ -68,6 +68,7 @@ def findString(matrix, str1):
         else:
             col -= 1
         if val != matrix[row][col]:
+            print(val)
             if val == 1:
                 val -= 1
             list.append(str1[val])
@@ -88,7 +89,25 @@ def printMatrix(matrix):
 
 
 
-str2 = "abcdaf"
-str1 = "acbcf"
+str2 = "ABCDGH"
+str1 = "AEDFHR"
 matrix = findCommon(str1, str2)
 print(findString(matrix, str1))
+
+
+
+'''
+
+
+    A   B   C   D   G   H
+A   1   1   1   1   1   1
+E   1   1   1   1   1   1
+D   1   1   1   2   2   2
+F   1   1   1   2   2   2
+H   1   1   1   2   2   3
+R   1   1   1   2   2   3
+
+
+
+
+'''
