@@ -12,6 +12,7 @@ b | 1 | 2 | 2 | 2 | 2 | 2 |
 c | 1 | 2 | 3 | 3 | 3 | 3 |
 f | 1 | 2 | 3 | 3 | 3 | 4 |
 
+returns: ['f', 'c', 'b', 'a']
 
 '''
 
@@ -71,7 +72,7 @@ def findString(matrix, str1):
             print(val)
             if val == 1:
                 val -= 1
-            list.append(str1[val])
+            list.append(str1[col])
             val = matrix[row][col]
 
     print(str1)
@@ -89,10 +90,10 @@ def printMatrix(matrix):
 
 
 
-str2 = "ABCDGH"
-str1 = "AEDFHR"
+str2 = "abcdaf"
+str1 = "acbcf"
 matrix = findCommon(str1, str2)
-print(findString(matrix, str1))
+print(findString(matrix, str2))
 
 
 
@@ -108,6 +109,6 @@ H   1   1   1   2   2   3
 R   1   1   1   2   2   3
 
 
-
+returns: ['H', 'D', 'A']
 
 '''
