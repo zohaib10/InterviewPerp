@@ -65,4 +65,8 @@ Algorithm:
     Make a seperare queue to transfer the value being pushed and all the values of the exisiting queue
     Then dequeue all values from second queue to the main queue to gaurantee a fast pop operation
 
+Refs:
+    1) https://docs.python.org/3/tutorial/classes.html - Classes in Python
+    2) https://dbader.org/blog/queues-in-python - Queues in Python
+
 '''
