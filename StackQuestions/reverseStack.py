@@ -19,10 +19,6 @@ def addValue(stack,val):
         stack.append(nval)
 
 
-
-
-
-
 stack = ["Yu Yu Hakushu", "Dragon Ball Z", "Hunter X Hunter", "Full Metal Alchemist", "Death Note", "Rurouni Kenshin"]
 print(stack)
 revserStack(stack)
@@ -41,9 +37,14 @@ print(stack)
 2) add the first from the recrsive stack which would be 4
 3) when adding next which is 5 we pop off 4 and add 5 and then 4
 
+| 4 |
+| 5 |
+| 3 |
+|_1_|
+
+
 
 Input:  ['Yu Yu Hakushu', 'Dragon Ball Z', 'Hunter X Hunter', 'Full Metal Alchemist', 'Death Note', 'Rurouni Kenshin']
 Output: ['Rurouni Kenshin', 'Death Note', 'Full Metal Alchemist', 'Hunter X Hunter', 'Dragon Ball Z', 'Yu Yu Hakushu']
-
 
 '''
