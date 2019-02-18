@@ -114,6 +114,48 @@ public static boolean isTB(){
 
 
 //########################################################################################################
+//Questions: Given a tree write a function to find the length of the longest branch of nodes in increasing consecutive order.
+/*
+                            5
+                          /   \
+                        2      6
+                      /  \      \
+                    1    3       7
+                         \        \
+                         4        8
+
+
+if val of current Node == val of parnet + 1 -
+
+*/
+
+
+
+public static int longestConsecutiveIncBranch(){
+  return Math.max(maxLen(root.left,root.value,0),maxLen(root.right,root.value,0));
+}
+
+
+public static int maxLen(Node curr, int parent, int length){
+  if (curr == null) return length;
+
+  if(parent + 1 == curr.value){
+    int lv = maxLen(curr.left, curr.value, length+1);
+    int rv = maxLen(curr.right, curr.value, length+1);
+    return Math.max(lv,rv);
+  }else{
+    int lv = maxLen(curr.left, curr.value, length+1);
+    int rv = maxLen(curr.right, curr.value, length+1);
+    return Math.max(Math.max(lv,rv),length);
+  }
+
+}
+
+
+
+
+
+//########################################################################################################
 
   public static BinaryTree createBinaryTree(){
     BinaryTree bst = new BinaryTree();
@@ -122,10 +164,8 @@ public static boolean isTB(){
     bst.insert(2);
     bst.insert(1);
     bst.insert(3);
-    bst.insert(7);
-    bst.insert(8);
     bst.insert(6);
-    bst.insert(13);
+    bst.insert(7);
     bst.insert(64);
     bst.insert(4);
 
@@ -135,11 +175,13 @@ public static boolean isTB(){
 
   public static void main(String [] args){
     BinaryTree bst = createBinaryTree();
-     if(isTB()){
-       System.out.println("Balanced Tree");
-     }else{
-       System.out.println("Tree not Balanced");
-     }
+    System.out.println(longestConsecutiveIncBranch());
+
+     // if(isTB()){
+     //   System.out.println("Balanced Tree");
+     // }else{
+     //   System.out.println("Tree not Balanced");
+     // }
     //bst.printLevelOrder();
   }
 
