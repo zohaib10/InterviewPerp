@@ -41,18 +41,14 @@ agbdba
  5 | 0 | 0 | 0 | 0 | 0 | 1 |
 
 
-[1, 1, 1, 1, 1, 3]
-[0, 1, 1, 1, 1, 1]
+[1, 1, 1, 1, 3, 5]
+[0, 1, 1, 1, 3, 3]
 [0, 0, 1, 1, 3, 3]
 [0, 0, 0, 1, 1, 1]
 [0, 0, 0, 0, 1, 1]
 [0, 0, 0, 0, 0, 1]
 
-
-
 '''
-
-
 def LPS_Matrix(str):
     matrix = [[0 for x in range(len(str))] for y in range(len(str))]
 
@@ -68,7 +64,7 @@ def LPS_Matrix(str):
                 if r != c:
                     val = 2 + matrix[r+1][c-1]
             else:
-                val = max(matrix[r-1][c], matrix[r][c-1])
+                val = max(matrix[r+1][c], matrix[r][c-1])
             matrix[r][c] = val
             print("r,c",r,c)
             print("val", val)
@@ -81,8 +77,6 @@ def LPS_Matrix(str):
 def printMatrix(matrix):
     for i in range(len(matrix[0])):
         print(matrix[i])
-
-
 
 
 
